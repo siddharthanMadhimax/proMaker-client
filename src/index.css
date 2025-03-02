@@ -218,4 +218,43 @@ body{
         border: 1px solid rgb(186, 11, 142);
     }
 }
+.generate-btn {
+    background: linear-gradient(to right, rgb(212, 218, 35), rgb(252, 186, 89), rgb(255, 200, 0));
+    background-size: 300% 100%;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 20px;
+    animation: button-animation 3s infinite ease-in-out;
+    border: none;
+    /* padding: 10px 20px !important; */
+    cursor: pointer;
+    /* transition: background 0.3s ease; */
+}
+.generate-btn:hover{
+    background-color: yellow !important;
+    color: black !important;
+}
+/* Custom Modal Background */
+.generatemodel .ant-modal-content {
+    background-color: #6e5ff35d !important; /* Dark background */
+    color: white !important;
+}
 
+
+
+@keyframes button-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.editableAccess{
+    border: 1px solid white;
+    padding: 20px;
+}

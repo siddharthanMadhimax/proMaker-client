@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Tilt from "react-parallax-tilt"
 
-const Project = ({project,setProject}) => {
+const Project = ({project,setProject,generate}) => {
   return (
     <div id='projects' className='mt-[100px]'>
         <h1 className='text-3xl font-bold'>Project</h1>
@@ -22,6 +22,7 @@ const Project = ({project,setProject}) => {
               transition={{duration:1}}
               key={index} className='bg-gray-700 p-2 rounded-lg'>
                 <TextArea 
+                readOnly={generate}
                 autoSize={{minRows:1,maxRows:5}}
                 value={item.projectName}
                 onChange={(e)=>setProject(index,"projectName",e.target.value)}
@@ -29,6 +30,7 @@ const Project = ({project,setProject}) => {
                   ,fontSize:"26px",fontWeight:"bold"
                 }}/>
                 <TextArea 
+                readOnly={generate}
                 autoSize={{ minRows: 1, maxRows: 15 }}
 
                 value={item.projectDetails} 

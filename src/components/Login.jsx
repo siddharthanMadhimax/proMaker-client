@@ -15,7 +15,7 @@ const Login = ({ isAuth, checkAuth }) => {
     const clientId = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
     console.log("url", backendUrl)
     const setToken = useAuthStore((state) => state.setToken)
-
+    const setName=useAuthStore((state)=>state.setName)
     const [messageRes, setMessageRes] = useState("")
     const form = useForm()
     const [signing, setSigning] = useState("signin")
@@ -36,8 +36,10 @@ const Login = ({ isAuth, checkAuth }) => {
             message.error(response.data.message)
         }
         const { token } = response.data
+        const {name}=response.data
         console.log('token', token)
         setToken(token)
+        setName(name)
         isAuth(!!token)
         if (response.data.isEnter) {
             navigate("/form")

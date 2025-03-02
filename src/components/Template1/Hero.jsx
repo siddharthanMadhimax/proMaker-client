@@ -6,7 +6,7 @@ import axiosInstanse from '../../../axiousInstance';
 import { useQuery } from '@tanstack/react-query';
 
 
-const Hero = ({ name, profession, setName, setProfession }) => {
+const Hero = ({ name, profession, setName, setProfession ,generate}) => {
   
   const [imageUrl, setImageUrl] = useState(null);
   const [loading,setLoading]=useState(false)
@@ -24,6 +24,7 @@ const Hero = ({ name, profession, setName, setProfession }) => {
       }
       return response.data.imageUrl
     },
+    refetchOnWindowFocus: false,
     
   })
   const handleUpload = async ({ file }) => {
@@ -64,12 +65,14 @@ const Hero = ({ name, profession, setName, setProfession }) => {
         {/* Left side */}
         <motion.div className='max-sm:order-2'>
           <Input
+          readOnly={generate}
             value={name}
             onChange={(e) => setName(e.target.value)}
             className='text-6xl sm:mb-10 mb-5 max-sm:text-5xl input-editable'
           />
           <motion.div initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
             <Input
+            readOnly={generate}
               value={profession}
               onChange={(e) => setProfession(e.target.value)}
               style={{ color: 'blue' }}
@@ -90,7 +93,7 @@ const Hero = ({ name, profession, setName, setProfession }) => {
            {
             loading ? (  <Spin className='relative sm:left-[170px] max-sm:left-[110px]' indicator={<LoadingOutlined style={{ fontSize: 60, color: 'blue' }} spin />} />)
             : imageUrl ?(
-              <img src={imageUrl}  alt="uploaded" className='rounded-full w-full h-full object-cover' />
+              <img src={imageUrl}  alt="uploaded" className='sm:rounded-full w-full h-full object-cover' />
             ):
             (
               <Upload showUploadList={false} customRequest={handleUpload} className='w-full text-center'>

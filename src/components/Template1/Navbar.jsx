@@ -44,7 +44,7 @@ const Navbar = ({nameFirst}) => {
                 {
                   _exports.navbars.map((item,index)=>(
                     <li key={index} className='text-lg font-bold'>
-                      <a href={`#${item.link}`} onClick={()=>setdrawerOpen(false)}>
+                      <a href={`${item.link}`} onClick={()=>setdrawerOpen(false)}>
                         {item.name}
                       </a>
                     </li>

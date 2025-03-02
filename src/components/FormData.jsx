@@ -9,13 +9,13 @@ import { useQuery } from '@tanstack/react-query'
 const FormData = ({setIsAuth}) => {
     const navigate=useNavigate()
     const [openPop,setOpenPop]=useState(false)
-
+    const username=localStorage.getItem("name")
     const {data:checkForm,isLoading}=useQuery({
         queryKey:["checkForm"],
         queryFn:async()=>{
             const response=await axiosInstanse.get("/product/checkForm")
             if(response.data.success){
-                navigate("/selectTemplate")
+                navigate(`/${username}/selectTemplate`)
             }
             return response.data
         }
@@ -27,7 +27,7 @@ const FormData = ({setIsAuth}) => {
         if(response.data.success){
             message.success("success")
             form.resetFields()
-            navigate("/selectTemplate")
+            navigate(`/${username}/selectTemplate`)
         }
         
     }
